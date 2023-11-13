@@ -1,4 +1,5 @@
 using FacebookAPI.Repositories;
+using FacebookAPI.Services;
 using FaceUserAPI.Services;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
@@ -9,6 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.Configure<FacebookDatabaseSettings>(builder.Configuration.GetSection("FacebookDatabase"));
 
 builder.Services.AddSingleton<UsersService>();
+builder.Services.AddSingleton<CommentsService>();
+builder.Services.AddSingleton<PublicationsService>();
 
 builder.Services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
 
